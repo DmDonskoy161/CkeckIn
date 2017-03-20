@@ -1,0 +1,53 @@
+﻿@model CkeckIn.Models.Questions.Discipline.DisciplineCreateView
+
+@{
+    ViewData["Title"] = "Создание новой дисцилплины";
+}
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    @Html.ActionLink("Репозиторий", "Index", "Question") >
+                    @Html.ActionLink("Дисцилплины", "Index", "Question") >
+                    <b>
+                        @Html.ActionLink("Создание новой дисцилплины", "Create", "Discipline")
+                    </b>
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form asp-action="Create">
+                    <div class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="DisciplineName" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="DisciplineName" class="form-control" />
+                                <span asp-validation-for="DisciplineName" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Добавить новую дисциплину" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+{
+    Title = "Подсказка",
+    Messsage = "На этой странице вы можете создать новую дисциплину, укажите ее название."
+})
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

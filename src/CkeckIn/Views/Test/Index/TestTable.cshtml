@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CkeckIn.Models.Questions.Test.Abstract.TestView>
+
+
+<div class="col-md-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-folder"></i>
+                Тесты
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TestName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ThreadName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DisciplineName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FactoryMethod)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.QuestionCountLimit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CountQuestionEntities)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(item.TestName, "Details", "Test", new { id = item.TestId }, new { title = "Открыть тест" })
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.ThreadName, "ViewThread", "Question", new { id = item.ThreadId }, new { title = "Открыть тему" })
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.DisciplineName, "Detail", "Question", new { id = item.DisciplineId }, new { title = "Открыть дисциплину" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FactoryMethod)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QuestionCountLimit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CountQuestionEntities)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

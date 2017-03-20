@@ -1,0 +1,39 @@
+﻿@using CkeckIn.Models.Questions
+@model CkeckIn.Models.Questions.RepositoryView
+
+@{
+    ViewData["Title"] = "Управление репозиторием";
+}
+
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1>
+                    <i class="fa fa-folder"></i>
+                    Управление репозиторием
+                </h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                @Html.ActionLink("Дисцилплины", "Index", "Question") |
+                @Html.ActionLink("Темы", "Index", "Question") |
+                @Html.ActionLink("Вопросы", "Index", "Question") |
+                @Html.ActionLink("Тесты", "Index", "Question") |
+                @Html.ActionLink("Пользователи", "Index", "Question") |
+            </div>
+        </div>
+    </div>
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+   {
+       Title = "Подсказка",
+       Messsage = "На этой странице вы можете просмотреть или изменить список всех дисциплин, тем, тестов или пользователей. "
+   })
+</div>
+
+<div class="row">
+    @Html.Partial("Index", Model.DisciplineViews)
+    @Html.Partial("Index", Model.ThreadViews)
+    @Html.Partial("ViewQuestions", Model.QuestionViews)
+</div>

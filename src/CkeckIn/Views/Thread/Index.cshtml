@@ -1,0 +1,9 @@
+﻿@model CkeckIn.Models.Questions.Thread.ThreadViewModel
+
+<div class="row">
+    @Html.Partial("Index/DisciplineSelector", Model.DisciplineItems)
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @Html.Partial("Index/ThreadsTable", Model.ThreadViews)
+    </div>
+</div>

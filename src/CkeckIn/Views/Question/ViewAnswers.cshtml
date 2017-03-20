@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CkeckIn.Models.Questions.Answer.AnswerView>
+
+@{
+    ViewData["Title"] = "ViewAnswers";
+}
+
+<div class="col-md-6 col-sm-6 col-xs-6">
+    <div class="x_panel" style="min-height: 400px;">
+        <div class="x_title">
+            <h2>
+                @Html.ActionLink("Добавить ответ", "AddAnswer", new {id = ViewData["Index"] })
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AnswerMessage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mark)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(item.AnswerMessage, "ViewAnswer", new {id = item.AnswerId})
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mark)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

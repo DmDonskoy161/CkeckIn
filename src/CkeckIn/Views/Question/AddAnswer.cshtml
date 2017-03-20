@@ -1,0 +1,72 @@
+﻿@model CkeckIn.Models.Questions.Answer.AnswerCreateView
+
+@{
+    ViewData["Title"] = "Добавление нового ответа";
+}
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    @Html.ActionLink("Репозиторий", "Index", "Repository") >
+                    @Html.ActionLink("Дисцилплины", "Index", "Discipline") >
+                    @Html.ActionLink("Темы", "Index", "Thread") >
+                    @Html.ActionLink("Список вопросов", "Index", "Question") >
+                    <b>
+                        @Html.ActionLink("Добавление нового ответа", "AddAnswer", "Question")
+                    </b>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form asp-action="AddAnswer">
+                    <div class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="QuestionId" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="QuestionId" class="select2_single form-control" asp-items="@Model.QuestionSelectList"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="AnswerMessage" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="AnswerMessage" class="form-control" />
+                                <span asp-validation-for="AnswerMessage" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Mark" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="Mark" class="form-control" />
+                                <span asp-validation-for="Mark" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Добавить новый ответ" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете добавить ответ на вопрос, выбрав его; укажите текст ответа и оценку за сам ответ. Оценка может быть 0 - если ответ не верный и 1, если верный. Так же вы можете использовать свою систему баллов, указав в самом тесте данную опцию."
+    })
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

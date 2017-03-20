@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CkeckIn.Models.Questions.Test.ProcessDetailView>
+
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    Список тестов
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TestName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ThreadName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DisciplineName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatorName)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.TestName, "Detail", new {id = item.TestId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.ThreadName, "Thread", new { id = item.ThreadId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.DisciplineName, "Discipline", new { id = item.DisciplineId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.CreatorName, "Teacher", new { id = item.CreatorId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Начать тестирование", "Detail", "Test", new {  id=item.TestId }, new {title = "Начать тестирование"})
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

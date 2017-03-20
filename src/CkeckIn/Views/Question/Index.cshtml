@@ -1,0 +1,33 @@
+﻿@using CkeckIn.Data
+@model CkeckIn.Models.Questions.Question.QuestionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    @Html.Partial("Index/ThreadSelector", Model.ThreadItems)
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @Html.Partial("Index/QuestionsTable", Model.QuestionViews)
+    </div>
+</div>
+
+  <!-- PNotify -->
+<script type="text/javascript" src="~/lib/gentelella/production/js/notify/pnotify.core.js"></script>
+<script type="text/javascript" src="~/lib/gentelella/production/js/notify/pnotify.buttons.js"></script>
+<script type="text/javascript" src="~/lib/gentelella/production/js/notify/pnotify.nonblock.js"></script>
+
+@if (Model.Action == CrudOperationAction.Created)
+{
+    <script type="text/javascript">
+        $(function () {
+            new PNotify({
+                title: 'Новый вопрос',
+                text: 'Вы успешно добавили новый вопрос!',
+                type: 'success'
+            });
+        });
+    
+    </script>
+}

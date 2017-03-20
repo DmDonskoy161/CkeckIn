@@ -1,0 +1,32 @@
+﻿@model CkeckIn.Models.NavigationCrud
+
+<li>
+    <a>
+        <i class="fa @Model.Icon"></i>
+        @Model.Title
+        <span class="fa fa-chevron-down"></span>
+    </a>
+    <ul class="nav child_menu" style="display: none">
+        <li>
+            @Html.ActionLink("Список", "Index", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Просмотр", "Detail", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Добавить", "Create", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Изменить", "Edit", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Удалить", "Delete", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Импорт", "Import", Model.Controller)
+        </li>
+        <li>
+            @Html.ActionLink("Экспорт", "Export", Model.Controller)
+        </li>
+    </ul>
+</li>

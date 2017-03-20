@@ -1,0 +1,62 @@
+﻿@model CkeckIn.Models.Questions.Test.ProcessTestCompleteView
+
+@{
+    ViewData["Title"] = "CompleteProcess";
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    @Html.ActionLink(Model.TestDetailView.DisciplineName, "Index", "Question") >
+                    @Html.ActionLink(Model.TestDetailView.ThreadName, "Index", "Question") >
+                    <b>
+                        @Html.ActionLink(Model.TestDetailView.TestName, "Create", "Discipline")
+                        
+                        [ Тест завершен ]
+                    </b>
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountOfTotalAnswers)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CountOfTotalAnswers)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountOfCorrectAnswers)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CountOfCorrectAnswers)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mark)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Mark)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BeginDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BeginDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+

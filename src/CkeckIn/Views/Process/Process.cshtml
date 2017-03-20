@@ -1,0 +1,38 @@
+﻿@model CkeckIn.Models.Questions.Test.ProcessTestWhileView
+
+@{
+    ViewData["Title"] = "Process";
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    @Html.ActionLink(Model.TestDetailView.DisciplineName, "Index", "Question") >
+                    @Html.ActionLink(Model.TestDetailView.ThreadName, "Index", "Question") >
+                    <b>
+                        @Html.ActionLink(Model.TestDetailView.TestName, "Create", "Discipline")
+                    </b>
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <h2 style="    margin-left: 10px;">
+                    Вопрос:
+
+                    <b>
+                        @Model.QuestionName
+                    </b>
+                </h2>
+
+
+
+                @Html.Partial("Process/AnswerTable", Model.AnswerModel)
+            </div>
+        </div>
+    </div>
+</div>

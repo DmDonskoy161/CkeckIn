@@ -1,0 +1,69 @@
+﻿@model CkeckIn.Models.Questions.Thread.ThreadDetailView
+
+@{
+    ViewData["Title"] = "ThreadDetailView";
+}
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>         
+                    <i class="fa fa-align-left"></i>
+
+                    @Html.ActionLink("Репозиторий", "Index", "Question") >
+                    @Html.ActionLink(@Model.DisciplinedName, "Detail", "Discipline", new {id = Model.DisciplineId}) >
+                    <b>
+                        @Html.ActionLink(@Model.ThreadName, "Detail", "Thread", new { id = Model.ThreadId })
+                    </b>
+                </h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 20px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Добавить вопрос", "AddQuestion", "Test", new { id = Model.ThreadId })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Изменить", "Edit", "Test", new { id = Model.ThreadId })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Удалить", "Delete", "Test", new { id = Model.ThreadId})
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ThreadId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ThreadId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ThreadName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ThreadName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DisciplineId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DisciplineId)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете просмотреть список всех тестов и вопросов связанных с выбранной дисциплиной. Вы можете создать, изменить или удалить существующие тесты или вопросы."
+    })
+</div>

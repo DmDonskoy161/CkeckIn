@@ -1,0 +1,83 @@
+﻿@model CkeckIn.Models.Questions.Question.QuestionDetailView
+
+@{
+    ViewData["Title"] = "ViewQuestion";
+    ViewData["Index"] = Model.QuestionId;
+}
+
+<div class="row">
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="x_panel" style="min-height: 400px;">
+            <div class="x_title">
+                <h2>
+                    <b>Вопрос:</b>
+                    @Model.QuestionMessage
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.QuestionId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.QuestionId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ThreadId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ThreadId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ThreadName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ThreadName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DisciplineId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DisciplineId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DisciplineName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DisciplineName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.QuestionMessage)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.QuestionMessage)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreationDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CreationDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumberOfAnswers)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumberOfAnswers)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Strong)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Strong)
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("ViewAnswers", Model.AnswerViews)
+</div>

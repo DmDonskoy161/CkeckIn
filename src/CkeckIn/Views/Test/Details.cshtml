@@ -1,0 +1,109 @@
+﻿@model CkeckIn.Models.Questions.Test.Abstract.TestDetailView
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["Index"] = Model.TestId;
+}
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    @Html.ActionLink(Model.DisciplineName, "Detail", "Question", new { id = Model.DisciplineId }, new { title = "Открыть страницу дисциплины" }) >
+                    @Html.ActionLink(Model.ThreadName, "ViewThread", "Question", new { id = Model.ThreadId }, new { title = "Открыть страницу темы" }) >
+                    @Html.ActionLink("Список тестов", "Index", "Test") >
+                    <b>
+                        @Html.ActionLink(Model.TestName, "Details", "Test", new { id = Model.TestId }, new { title = "Ссылка на тест" })
+                    </b>
+                </h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 20px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Добавить вопрос", "AddQuestion", "Test", new { id = Model.TestId })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Изменить", "Edit", "Test", new { id = Model.TestId }, new { title = "Ссылка на тест" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Удалить", "Delete", "Test", new { id = Model.TestId }, new { title = "Ссылка на тест" })
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TestName)
+                        </dt>
+                        <dd>
+                            @Html.ActionLink(Model.TestName, "Details", "Test", new { id = Model.TestId }, new { title = "Ссылка на тест" })
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ThreadName)
+                        </dt>
+                        <dd>
+                            @Html.ActionLink(Model.ThreadName, "ViewThread", "Question", new { id = Model.ThreadId }, new { title = "Открыть страницу темы" })
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DisciplineName)
+                        </dt>
+                        <dd>
+                            @Html.ActionLink(Model.DisciplineName, "Detail", "Question", new { id = Model.DisciplineId }, new { title = "Открыть страницу дисциплины" })
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CreatedDate)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FactoryMethod)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FactoryMethod)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CreatorId)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CreatorId)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CreatorName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CreatorName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.QuestionCountLimit)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.QuestionCountLimit)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CountQuestionEntities)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CountQuestionEntities)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете просмотмотреть информацию о тесте, список вопросов включенных в этот тест и изменить его."
+    })
+</div>
+
+@Html.Partial("ViewQuestions", Model.QuestionViews)

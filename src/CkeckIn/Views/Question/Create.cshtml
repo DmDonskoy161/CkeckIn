@@ -1,0 +1,72 @@
+﻿@model CkeckIn.Models.Questions.Question.QuestionCreateView
+
+@{
+    ViewData["Title"] = "Добавление нового вопроса";
+}
+
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-align-left"></i>
+                    @Html.ActionLink("Репозиторий", "Index", "Repository") >
+                    @Html.ActionLink("Дисцилплины", "Index", "Discipline") >
+                    @Html.ActionLink("Темы", "Index", "Thread") >
+                    @Html.ActionLink("Список вопросов", "Index", "Question") >
+                    <b>
+                        @Html.ActionLink("Добавление нового вопроса", "Create", "Question")
+                    </b>
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form asp-action="Create">
+                    <div class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="ThreadId" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="ThreadId" class="select2_single form-control" asp-items="@Model.ThreadSelectList"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="QuestionMessage" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="QuestionMessage" class="form-control" />
+                                <span asp-validation-for="QuestionMessage" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Strong" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="Strong" class="form-control" />
+                                <span asp-validation-for="Strong" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете добавить новый вопрос, укажите его текст, установить сложность и выбирите тему вопроса. Сложность вопроса нужна, если тест будет формироваться по сложности вопроса."
+    })
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

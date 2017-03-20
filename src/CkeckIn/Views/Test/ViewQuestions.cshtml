@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CkeckIn.Models.Questions.Test.Question.TestQuestionView>
+
+@{
+    ViewData["Title"] = "ViewQuestions";
+}
+
+
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Вопросы
+                    
+                    [ @Html.ActionLink("Добавить вопрос", "AddQuestion", "Test", new {id = ViewData["Index"]}) ]
+                </h2>                
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.QuestionMessage)
+                        </th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.Position.ToString(), "EditQuestion", new {id = item.TestQuestionId}, new {title = "Изменить вопрос"})
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink(item.QuestionMessage, "ViewQuestion", "Question", new { id = item.QuestionId }, new { title = "Открыть вопрос" })
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Edit", "EditQuestion", new { id = item.TestQuestionId }) |
+                                    @Html.ActionLink("Delete", "DeleteQuestion", new { id = item.TestQuestionId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model CkeckIn.Models.Questions.Test.Question.TestQuestionCreateView
+
+@{
+    ViewData["Title"] = "AddQuestion";
+}
+
+<div class="row">
+
+    <div class="col-md-6 col-xs-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Добавление вопроса в тест
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form asp-action="AddQuestion" asp-antiforgery="true">
+                    <div class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="TestId" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="TestId" class="select2_single form-control" asp-items="@Model.TestSelectList" aria-readonly="true"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="QuestionId" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="QuestionId" class="select2_single form-control" asp-items="@Model.QuestionSelectList"></select>
+                                <span asp-validation-for="QuestionId" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Position" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="Position" class="form-control"/>
+                                <span asp-validation-for="Position" class="text-danger"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Добавить вопрос" class="btn btn-default"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете добавить вопрос для тестрования, указав сам тест, вопрос и позицию вопроса в тесте. Позицию вопроса необходимо указывать, если вы хотите использовать тест со строгим порядком вопросов. Для этого предварительно выставите этот режим в настройках теста."
+    })
+</div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

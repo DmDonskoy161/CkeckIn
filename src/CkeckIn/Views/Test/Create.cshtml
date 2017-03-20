@@ -1,0 +1,61 @@
+﻿@using CkeckIn.Models.Questions.Test.Abstract
+@model CkeckIn.Models.Questions.Test.Abstract.TestCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="row">
+
+    <div class="col-md-8 col-xs-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Создание нового теста
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form asp-action="Create">
+                    <div class="form-horizontal form-label-left">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="View.ThreadId" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="View.ThreadId" class="select2_single form-control" asp-items="@Model.ThreadSelectList()"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="View.TestName" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="View.TestName" class="form-control" />
+                                <span asp-validation-for="View.TestName" class="text-danger" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="View.FactoryMethod" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="View.FactoryMethod" class="select2_single form-control" asp-items="@Model.FactoryMethodSelectList"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("PageDescriptionView", new PageDescriptionView
+    {
+        Title = "Подсказка",
+        Messsage = "На этой странице вы можете создать новый тест, указав тему тестирования, название и способ формирования вопросов. "
+    })
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

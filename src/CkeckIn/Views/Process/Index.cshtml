@@ -1,0 +1,7 @@
+﻿@using CkeckIn.Models.Questions.Test
+@model CkeckIn.Models.Questions.Test.ProcessTestDetailModel
+
+<div class="row">
+    @Html.Partial("Index/ThreadSelector", Model.ThreadItems)
+    @Html.Partial("Index/TestTable", Model.TestViews)
+</div>

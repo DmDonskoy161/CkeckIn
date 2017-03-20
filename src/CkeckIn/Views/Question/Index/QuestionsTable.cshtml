@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CkeckIn.Models.Questions.Question.QuestionView>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="min-height: 400px;">
+        <div class="x_title">
+            <h2>
+                @Html.ActionLink("Вопросы", "Index", "Question", null, new {title = "Открыть список вопросов"})
+                [ @Html.ActionLink("Добавить вопрос", "Create")]
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QuestionMessage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThreadName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisciplineName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumberOfAnswers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Strong)
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@item.QuestionRowStatus">
+                            <td>
+                                @Html.ActionLink(item.QuestionMessage, "Detail", new {id = item.QuestionId}, new {title = "Открыть страницу вопроса"})
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.ThreadName, "Detail", "Thread", new { id = item.ThreadId }, new { title = "Открыть страницу темы" })
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.DisciplineName, "Detail", "Discipline", new { id = item.DisciplineId }, new { title = "Открыть страницу дисциплины" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreationDate)
+                            </td>
+                            <td title="Количество ответов в вопросе">
+                                @Html.DisplayFor(modelItem => item.NumberOfAnswers)
+                            </td>
+                            <td title="Категория сложности вопроса">
+                                @Html.DisplayFor(modelItem => item.Strong)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

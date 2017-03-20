@@ -1,0 +1,19 @@
+﻿@model CkeckIn.Models.Questions.Test.ProcessAnswerModel
+
+
+<form asp-action="Answer">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <select asp-for="AnswerId" asp-items="Model.AnswerViews" class="form-control"></select>
+                <span asp-validation-for="AnswerId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <input type="submit" value="Ответить на вопрос" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
